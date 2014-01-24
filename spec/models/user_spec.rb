@@ -76,12 +76,12 @@ end
 		it {should_not be_valid}
 	end
 
-describe "with a password that's too short" do
+	describe "with a password that's too short" do
 	before {@user.password = @user.password_confirmation = "a" * 5}
 	it {should be_invalid}
 end
 
-describe "return value of authenticate method" do
+	describe "return value of authenticate method" do
 	before { @user.save }
 	let(:found_user) { User.find_by(email: @user.email) }
 
@@ -95,7 +95,16 @@ describe "return value of authenticate method" do
 		it { should_not eq user_for_invalid_password }
 		specify { expect(user_for_invalid_password).to be_false }
 	end
-end
+   end
+
+   describe "remember token" do
+   	before { @user.save }
+   	its(:remember_token) { should_not be_blank }
+   end
+   
+
+
+
 end
 
 
