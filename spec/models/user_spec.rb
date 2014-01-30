@@ -146,7 +146,6 @@ describe User do
   end
 
   describe "micropost associations" do
-    
     before { @user.save }
     let!(:older_micropost) do
       FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
